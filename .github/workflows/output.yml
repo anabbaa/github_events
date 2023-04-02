@@ -3,6 +3,18 @@ on:
   pull_request:
     types:
       - opened
+    branches:
+      - main
+      - "dev-*"
+      - "feat/**"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - "dev-*" #this means any names started with dev then any characters after that
+      - "feat/**" # zhis will targeted feat/dev or any names with slash
+    paths.ignore:
+      - ",github/workflows/*"
 jobs:
   deploy:
     runs-on: ubuntu-latest
